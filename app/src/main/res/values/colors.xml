@@ -7,4 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- ### Houses Colors ### -->
+    <!-- Gryffindor -->
+    <color name="gryffindor_color_heavy_red">#740001</color>
+    <color name="gryffindor_color_red">#ae0001</color>
+    <color name="gryffindor_color_gold">#d3a625</color>
+    <color name="gryffindor_color_yellow">#eeba30</color>
+    <!-- Slytherin -->
+    <color name="slytherin_color_heavy_green">#1a472a</color>
+    <color name="slytherin_color_green">#2a623d</color>
+    <color name="slytherin_heavy_grey">#5d5d5d</color>
+    <color name="slytherin_grey">#aaaaaa</color>
 </resources>
