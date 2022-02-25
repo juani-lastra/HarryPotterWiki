@@ -6,6 +6,10 @@ plugins {
 android {
     compileSdk 31
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId "com.mobiletandil.harrypotterwiki"
         minSdk 23
@@ -34,9 +38,29 @@ android {
 preBuild.dependsOn ktlintFormat
 
 dependencies {
+    def lib = rootProject.ext.generalDependencies
+    def testLib = rootProject.ext.testDependencies
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation project(path: ':domain')
     implementation project(path: ':di')
+
+    implementation lib.appCompat
+    implementation lib.coreKtx
+    implementation lib.material
+
+    implementation lib.koin
+    implementation lib.koinCore
+    implementation lib.koinTest
+
+    implementation lib.viewModel
+
+    testImplementation testLib.junit
+    testImplementation testLib.mockitoCore
+    testImplementation testLib.mockitoInline
+    testImplementation testLib.mockitoKotlin
+    testImplementation testLib.androidxCoreTesting
+    testImplementation testLib.kotlinxCoroutinesTest
+    androidTestImplementation testLib.extJunit
+    androidTestImplementation testLib.mockitoAndroid
+    androidTestImplementation testLib.espresso
 }
