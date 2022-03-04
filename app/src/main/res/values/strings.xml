@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HarryPotterWiki</string>
+    <string name="button_wizards">wizards</string>
+    <string name="button_spells">spells</string>
 </resources>

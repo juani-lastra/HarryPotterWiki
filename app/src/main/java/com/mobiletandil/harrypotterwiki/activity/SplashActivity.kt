@@ -31,6 +31,7 @@ class SplashActivity : AppCompatActivity() {
         when (eventData?.statusType) {
             Status.LOAD_COMPLETE -> {
                 startActivity(MainActivity.getIntent(this))
+                this.finish()
             }
         }
     }

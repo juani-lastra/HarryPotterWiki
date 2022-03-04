@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:theme="@style/Theme.HarryPotterWiki"
-    app:layoutDescription="@xml/splash_activity_scene">
+    app:layoutDescription="@xml/splash_activity_scene"
+    android:background="@drawable/app_background">
 
     <ImageView
         android:id="@+id/icon_splash_activity"

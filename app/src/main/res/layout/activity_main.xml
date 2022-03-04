@@ -4,15 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    android:theme="@style/Theme.HarryPotterWiki"
+    tools:context=".activity.MainActivity"
+    android:background="@drawable/app_background">
 
-    <TextView
+    <Button
+        android:id="@+id/button_wizards"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        style="@style/ButtonMainActivityStyle"
+        android:text="@string/button_wizards"
+        app:layout_constraintEnd_toStartOf="@id/button_spells"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/button_gryffindor"/>
+
+    <Button
+        android:id="@+id/button_spells"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ButtonMainActivityStyle"
+        android:text="@string/button_spells"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_wizards"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/button_slytherin"/>
+
+    <ImageView
+        android:id="@+id/button_gryffindor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        style="@style/HousesIconsStyle"
+        android:src="@drawable/ic_gryffindor_button"
+        app:layout_constraintBottom_toTopOf="@id/button_hufflepuff"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_wizards"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <ImageView
+        android:id="@+id/button_slytherin"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        style="@style/HousesIconsStyle"
+        android:src="@drawable/ic_slytherin_button"
+        app:layout_constraintBottom_toTopOf="@id/button_ravenclaw"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintTop_toBottomOf="@id/button_spells"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <ImageView
+        android:id="@+id/button_hufflepuff"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        style="@style/HousesIconsStyle"
+        android:src="@drawable/ic_hufflepuff_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintLeft_toRightOf="@id/button_slytherin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_gryffindor"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <ImageView
+        android:id="@+id/button_ravenclaw"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        style="@style/HousesIconsStyle"
+        android:src="@drawable/ic_ravenclaw_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintLeft_toRightOf="@id/button_gryffindor"
+        app:layout_constraintTop_toBottomOf="@id/button_slytherin"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

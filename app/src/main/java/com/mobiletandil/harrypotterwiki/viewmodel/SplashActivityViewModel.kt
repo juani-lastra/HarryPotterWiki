@@ -8,8 +8,9 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.core.component.KoinComponent
 
-class SplashActivityViewModel : ViewModel() {
+class SplashActivityViewModel : ViewModel(), KoinComponent {
     private var mutableLiveData: MutableLiveData<Event<Data>> = MutableLiveData()
 
     fun liveData() = mutableLiveData
