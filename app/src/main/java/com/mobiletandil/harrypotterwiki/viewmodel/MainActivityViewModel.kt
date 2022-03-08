@@ -2,9 +2,9 @@ package com.mobiletandil.harrypotterwiki.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.mobiletandil.domain.utils.Houses
+import com.mobiletandil.domain.utils.Houses.NONE
 import com.mobiletandil.harrypotterwiki.utils.Event
-import com.mobiletandil.harrypotterwiki.utils.Houses
-import com.mobiletandil.harrypotterwiki.utils.Houses.NONE
 import com.mobiletandil.harrypotterwiki.viewmodel.MainActivityStatus.GO_TO_HOUSES_ACTIVITY
 import com.mobiletandil.harrypotterwiki.viewmodel.MainActivityStatus.GO_TO_SPELLS_ACTIVITY
 import com.mobiletandil.harrypotterwiki.viewmodel.MainActivityStatus.GO_TO_WIZARDS_ACTIVITY

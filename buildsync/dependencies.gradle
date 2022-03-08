@@ -16,16 +16,27 @@ ext {
 
     viewmodelVersion = "2.4.1"
 
+    retrofitVersion = "2.9.0"
+    converterVersion = "2.9.0"
+
+    roomVersion = "2.4.2"
+
     generalDependencies = [
-            appCompat            : "androidx.appcompat:appcompat:${appCompatVersion}",
-            coreKtx              : "androidx.core:core-ktx:${coreKtxVersion}",
-            material             : "com.google.android.material:material:${materialVersion}",
+            appCompat     : "androidx.appcompat:appcompat:${appCompatVersion}",
+            coreKtx       : "androidx.core:core-ktx:${coreKtxVersion}",
+            material      : "com.google.android.material:material:${materialVersion}",
 
-            koin                 : "io.insert-koin:koin-android:${koinVersion}",
-            koinCore             : "io.insert-koin:koin-core:${koinVersion}",
-            koinTest             : "io.insert-koin:koin-test:${koinVersion}",
+            koin          : "io.insert-koin:koin-android:${koinVersion}",
+            koinCore      : "io.insert-koin:koin-core:${koinVersion}",
+            koinTest      : "io.insert-koin:koin-test:${koinVersion}",
 
-            viewModel            : "androidx.lifecycle:lifecycle-viewmodel-ktx:${viewmodelVersion}",
+            viewModel     : "androidx.lifecycle:lifecycle-viewmodel-ktx:${viewmodelVersion}",
+
+            retrofit      : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            converter     : "com.squareup.retrofit2:converter-gson:${converterVersion}",
+            room          : "androidx.room:room-runtime:${roomVersion}",
+            roomCompiler  : "androidx.room:room-compiler:${roomVersion}",
+            roomCoroutines: "androidx.room:room-ktx:${roomVersion}"
     ]
 
     testDependencies = [

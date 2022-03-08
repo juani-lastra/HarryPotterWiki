@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -36,10 +37,17 @@ dependencies {
 
     def lib = rootProject.ext.generalDependencies
 
+    implementation lib.retrofit
+    implementation lib.converter
+
     implementation lib.appCompat
     implementation lib.coreKtx
 
     implementation lib.koin
     implementation lib.koinCore
     implementation lib.koinTest
+
+    implementation lib.room
+    implementation lib.roomCoroutines
+    kapt lib.roomCompiler
 }
