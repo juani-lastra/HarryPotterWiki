@@ -1,4 +1,4 @@
-package com.mobiletandil.harrypotterwiki.utils
+package com.mobiletandil.domain.utils
 
 enum class Houses {
     GRYFFINDOR_HOUSE,

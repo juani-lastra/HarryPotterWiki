@@ -5,12 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.mobiletandil.domain.utils.Houses.GRYFFINDOR_HOUSE
+import com.mobiletandil.domain.utils.Houses.HUFFLEPUFF_HOUSE
+import com.mobiletandil.domain.utils.Houses.RAVENCLAW_HOUSE
+import com.mobiletandil.domain.utils.Houses.SLYTHERIN_HOUSE
 import com.mobiletandil.harrypotterwiki.databinding.ActivityMainBinding
 import com.mobiletandil.harrypotterwiki.utils.Event
-import com.mobiletandil.harrypotterwiki.utils.Houses.GRYFFINDOR_HOUSE
-import com.mobiletandil.harrypotterwiki.utils.Houses.HUFFLEPUFF_HOUSE
-import com.mobiletandil.harrypotterwiki.utils.Houses.RAVENCLAW_HOUSE
-import com.mobiletandil.harrypotterwiki.utils.Houses.SLYTHERIN_HOUSE
 import com.mobiletandil.harrypotterwiki.viewmodel.MainActivityData
 import com.mobiletandil.harrypotterwiki.viewmodel.MainActivityStatus.GO_TO_HOUSES_ACTIVITY
 import com.mobiletandil.harrypotterwiki.viewmodel.MainActivityStatus.GO_TO_SPELLS_ACTIVITY

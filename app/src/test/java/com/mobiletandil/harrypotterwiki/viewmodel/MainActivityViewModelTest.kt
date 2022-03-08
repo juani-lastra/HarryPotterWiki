@@ -1,10 +1,10 @@
 package com.mobiletandil.harrypotterwiki.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.mobiletandil.harrypotterwiki.utils.Houses.GRYFFINDOR_HOUSE
-import com.mobiletandil.harrypotterwiki.utils.Houses.HUFFLEPUFF_HOUSE
-import com.mobiletandil.harrypotterwiki.utils.Houses.RAVENCLAW_HOUSE
-import com.mobiletandil.harrypotterwiki.utils.Houses.SLYTHERIN_HOUSE
+import com.mobiletandil.domain.utils.Houses.GRYFFINDOR_HOUSE
+import com.mobiletandil.domain.utils.Houses.HUFFLEPUFF_HOUSE
+import com.mobiletandil.domain.utils.Houses.RAVENCLAW_HOUSE
+import com.mobiletandil.domain.utils.Houses.SLYTHERIN_HOUSE
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
