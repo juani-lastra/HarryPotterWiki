@@ -6,6 +6,27 @@
     android:background="@drawable/app_background"
     android:theme="@style/Theme.HarryPotterWiki">
 
+    <ImageView
+        android:id="@+id/houses_activity_no_connection_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/slytherin_color_heavy_green"
+        android:src="@drawable/ic_no_connection"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/houses_activity_no_connection_text"
+        style="@style/NoConnectionStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/houses_activity_no_connection_image"
+        android:layout_alignBottom="@+id/houses_activity_no_connection_image"
+        android:gravity="center"
+        android:text="@string/no_connection_msg"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="0dp"

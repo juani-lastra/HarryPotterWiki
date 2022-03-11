@@ -36,6 +36,9 @@ dependencies {
 
     def lib = rootProject.ext.generalDependencies
 
+    implementation lib.retrofit
+    implementation lib.converter
+
     implementation lib.appCompat
     implementation lib.coreKtx
 

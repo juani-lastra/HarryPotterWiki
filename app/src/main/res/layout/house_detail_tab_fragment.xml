@@ -3,8 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/app_background"
     android:theme="@style/Theme.HarryPotterWiki"
     tools:context=".fragment.HouseDetailTabFragment">
+
+    <TextView
+        android:id="@+id/house_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/HouseTitleStyle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
