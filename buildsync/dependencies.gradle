@@ -16,6 +16,9 @@ ext {
 
     viewmodelVersion = "2.4.1"
 
+    retrofitVersion = "2.9.0"
+    converterVersion = "2.9.0"
+
     generalDependencies = [
             appCompat            : "androidx.appcompat:appcompat:${appCompatVersion}",
             coreKtx              : "androidx.core:core-ktx:${coreKtxVersion}",
@@ -26,6 +29,10 @@ ext {
             koinTest             : "io.insert-koin:koin-test:${koinVersion}",
 
             viewModel            : "androidx.lifecycle:lifecycle-viewmodel-ktx:${viewmodelVersion}",
+
+            retrofit             : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            converter            : "com.squareup.retrofit2:converter-gson:${converterVersion}"
+
     ]
 
     testDependencies = [

@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">HarryPotterWiki</string>
+    <string name="no_connection_msg">Can\'t use the app right now, no data received, please make sure you are connected to internet</string>
     <string name="button_wizards">wizards</string>
     <string name="button_spells">spells</string>
+    <string name="toast_show_error">Can not connect to the application right now, please try again later</string>
 </resources>

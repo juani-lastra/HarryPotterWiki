@@ -9,6 +9,19 @@
         <item name="android:shadowRadius">@integer/shadow_radius_size</item>
         <item name="android:background">@drawable/button_background</item>
     </style>
+    
+    <style name="HouseTitleStyle" parent="ButtonMainActivityStyle">
+        <item name="android:layout_marginTop">@dimen/margin_houses_title</item>
+        <item name="android:padding">@dimen/padding_houses_icons_button</item>
+        <item name="android:textSize">@dimen/house_title_text_size</item>
+    </style>
+
+    <style name="NoConnectionStyle">
+        <item name="android:padding">@dimen/padding_houses_icons_button</item>
+        <item name="android:textSize">@dimen/house_title_text_size</item>
+        <item name="fontFamily">@font/hpfont</item>
+        <item name="android:textColor">@color/slytherin_grey</item>
+    </style>
 
     <style name="HousesIconsStyle">
         <item name="android:padding">@dimen/padding_houses_icons_button</item>
