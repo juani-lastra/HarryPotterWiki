@@ -1,6 +1,7 @@
 package com.mobiletandil.harrypotterwiki
 
 import android.app.Application
+import com.mobiletandil.di.databaseModule
 import com.mobiletandil.di.serviceModule
 import com.mobiletandil.di.useCaseModule
 import com.mobiletandil.harrypotterwiki.di.viewModelModule
@@ -12,7 +13,7 @@ class HarryPotterWikiApplication : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@HarryPotterWikiApplication)
-            modules(viewModelModule, useCaseModule, serviceModule)
+            modules(viewModelModule, useCaseModule, serviceModule, databaseModule)
         }
     }
 }
