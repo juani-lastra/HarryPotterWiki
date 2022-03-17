@@ -2,9 +2,7 @@ package com.mobiletandil.harrypotterwiki.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.mobiletandil.domain.entity.House
-import com.mobiletandil.domain.service.HarryPotterService
 import com.mobiletandil.domain.usecase.GetOneHouseUseCase
-import com.mobiletandil.domain.usecase.GetOneHouseUseCaseImpl
 import com.mobiletandil.domain.utils.Houses
 import com.mobiletandil.domain.utils.ResponseResult
 import com.nhaarman.mockitokotlin2.mock
@@ -27,8 +25,7 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class HousesActivityViewModelTest {
     private lateinit var viewModel: HousesActivityViewModel
-    private lateinit var getHouseUseCase: GetOneHouseUseCase
-    private val service: HarryPotterService = mock()
+    private val getHouseUseCase: GetOneHouseUseCase = mock()
     private val testDispatcher = TestCoroutineDispatcher()
 
     @get:Rule
@@ -37,7 +34,6 @@ class HousesActivityViewModelTest {
     @Before
     fun init() {
         Dispatchers.setMain(testDispatcher)
-        getHouseUseCase = GetOneHouseUseCaseImpl(service)
         viewModel = HousesActivityViewModel(getHouseUseCase)
     }
 

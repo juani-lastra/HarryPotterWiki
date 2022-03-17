@@ -1,17 +1,19 @@
 package com.mobiletandil.domain.usecase
 
 import com.mobiletandil.domain.entity.House
+import com.mobiletandil.domain.service.HarryPotterDatabase
 import com.mobiletandil.domain.service.HarryPotterService
 import com.mobiletandil.domain.utils.Constants
 import com.mobiletandil.domain.utils.Houses
 import com.mobiletandil.domain.utils.HousesIds
 import com.mobiletandil.domain.utils.ResponseResult
+import java.lang.Exception
 
 interface GetOneHouseUseCase {
     operator fun invoke(house: Houses): ResponseResult<House>
 }
 
-class GetOneHouseUseCaseImpl(private val service: HarryPotterService) : GetOneHouseUseCase {
+class GetOneHouseUseCaseImpl(private val service: HarryPotterService, private val database: HarryPotterDatabase) : GetOneHouseUseCase {
     override fun invoke(house: Houses): ResponseResult<House> {
         val houseId: String = when (house) {
             Houses.GRYFFINDOR_HOUSE -> HousesIds.GRYFFINDOR_HOUSE
@@ -22,6 +24,23 @@ class GetOneHouseUseCaseImpl(private val service: HarryPotterService) : GetOneHo
                 Constants.EMPTY_STRING
             }
         }
-        return service.getHouse(houseId)
+        return try {
+            when (val responseResult = service.getHouse(houseId)) {
+                is ResponseResult.Success -> {
+                    database.insertHouse(responseResult.data)
+                    ResponseResult.Success(database.getHouse(houseId))
+                }
+                is ResponseResult.Failure -> {
+                    val responseDBResult = database.getHouse(houseId)
+                    if (responseDBResult.name.isNotEmpty()) {
+                        ResponseResult.Success(responseDBResult)
+                    } else {
+                        ResponseResult.Success(responseDBResult)
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            ResponseResult.Failure(Exception(e))
+        }
     }
 }
