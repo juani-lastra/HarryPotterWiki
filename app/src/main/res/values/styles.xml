@@ -28,4 +28,18 @@
         <item name="contentDescription">@string/app_name</item>
     </style>
 
+    <style name="HousesDescriptionStyle">
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:padding">@dimen/padding_main_button</item>
+        <item name="android:textSize">@dimen/houses_descriptions_text_size</item>
+        <item name="android:fontFamily">@font/fontdescriptions</item>
+        <item name="android:layout_margin">@dimen/margin_houses_descriptions</item>
+    </style>
+
+    <style name="HeadsDescriptionStyle">
+        <item name="android:padding">@dimen/padding_main_button</item>
+        <item name="android:textSize">@dimen/houses_descriptions_text_size</item>
+        <item name="android:fontFamily">@font/fontdescriptions</item>
+        <item name="android:layout_margin">@dimen/margin_houses_descriptions</item>
+    </style>
 </resources>

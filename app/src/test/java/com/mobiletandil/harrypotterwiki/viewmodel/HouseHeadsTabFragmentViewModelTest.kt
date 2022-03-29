@@ -10,17 +10,17 @@ import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class HouseDetailTabFragmentViewModelTest {
+class HouseHeadsTabFragmentViewModelTest {
     @get:Rule
     val taskExecutorRule = InstantTaskExecutorRule()
 
-    private val viewModel = HouseDetailTabFragmentViewModel()
+    private val viewModel = HouseHeadsTabFragmentViewModel()
 
     @Test
     fun initUI() {
         viewModel.initUI(MOCK_HOUSE_OK)
         assertEquals(
-            HouseDetailStatus.INIT_UI,
+            HouseHeadsStatus.INIT_UI,
             viewModel.liveData().value?.peekContent()?.statusType
         )
         assertEquals(

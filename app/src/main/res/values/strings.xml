@@ -4,4 +4,10 @@
     <string name="button_wizards">wizards</string>
     <string name="button_spells">spells</string>
     <string name="toast_show_error">Can not connect to the application right now, please try again later</string>
+    <string name="house_founder_description">Founder: %1$s</string>
+    <string name="house_colors_description">Colors: %1$s</string>
+    <string name="house_animal_description">Animal: %1$s</string>
+    <string name="house_element_description">Element: %1$s</string>
+    <string name="house_ghost_description">Ghost: %1$s</string>
+    <string name="house_common_room_description">Common Room: %1$s</string>
 </resources>

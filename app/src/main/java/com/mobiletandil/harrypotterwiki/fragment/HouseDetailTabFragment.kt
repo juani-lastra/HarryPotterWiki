@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.mobiletandil.domain.entity.House
+import com.mobiletandil.harrypotterwiki.R
 import com.mobiletandil.harrypotterwiki.databinding.HouseDetailTabFragmentBinding
 import com.mobiletandil.harrypotterwiki.utils.Constants.HOUSE_DATA_KEY
 import com.mobiletandil.harrypotterwiki.utils.Event
@@ -17,25 +18,35 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HouseDetailTabFragment : Fragment() {
     private lateinit var binding: HouseDetailTabFragmentBinding
-    private lateinit var house: House
     private val viewModel by viewModel<HouseDetailTabFragmentViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = HouseDetailTabFragmentBinding.inflate(layoutInflater)
-        house = arguments?.get(HOUSE_DATA_KEY) as House
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.liveData().observe(viewLifecycleOwner, updateUIObserver)
-        viewModel.initUI()
+        viewModel.initUI(arguments?.get(HOUSE_DATA_KEY) as House)
     }
 
     private val updateUIObserver = Observer<Event<HouseDetailData>> { event ->
         val eventData = event.getContentIfNotHandled()
         when (eventData?.statusType) {
-            INIT_UI -> binding.houseTitle.text = house.name
+            INIT_UI -> {
+                with(binding) {
+                    eventData.houseData?.let {
+                        houseTitle.text = it.name
+                        houseFounder.text = getString(R.string.house_founder_description, it.founder)
+                        houseColors.text = getString(R.string.house_colors_description, it.houseColours)
+                        houseAnimal.text = getString(R.string.house_animal_description, it.animal)
+                        houseElement.text = getString(R.string.house_element_description, it.element)
+                        houseGhost.text = getString(R.string.house_ghost_description, it.ghost)
+                        houseCommonRoom.text = getString(R.string.house_common_room_description, it.commonRoom)
+                    }
+                }
+            }
         }
     }
 

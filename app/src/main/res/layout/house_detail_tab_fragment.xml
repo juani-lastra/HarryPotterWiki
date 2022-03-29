@@ -1,20 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/app_background"
     android:theme="@style/Theme.HarryPotterWiki"
     tools:context=".fragment.HouseDetailTabFragment">
 
-    <TextView
-        android:id="@+id/house_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/HouseTitleStyle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/house_title"
+            style="@style/HouseTitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/house_founder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/house_founder"
+            style="@style/HousesDescriptionStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/house_colors"
+            app:layout_constraintTop_toBottomOf="@+id/house_title" />
+
+        <TextView
+            android:id="@+id/house_colors"
+            style="@style/HousesDescriptionStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/house_animal"
+            app:layout_constraintTop_toBottomOf="@+id/house_founder" />
+
+        <TextView
+            android:id="@+id/house_animal"
+            style="@style/HousesDescriptionStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/house_element"
+            app:layout_constraintTop_toBottomOf="@+id/house_colors" />
+
+        <TextView
+            android:id="@+id/house_element"
+            style="@style/HousesDescriptionStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/house_ghost"
+            app:layout_constraintTop_toBottomOf="@+id/house_animal" />
+
+        <TextView
+            android:id="@+id/house_ghost"
+            style="@style/HousesDescriptionStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/house_common_room"
+            app:layout_constraintTop_toBottomOf="@+id/house_element" />
+
+        <TextView
+            android:id="@+id/house_common_room"
+            style="@style/HousesDescriptionStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/house_ghost" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

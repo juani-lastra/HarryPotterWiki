@@ -10,7 +10,7 @@ class HouseDetailTabFragmentViewModel : ViewModel(), KoinComponent {
     private var mutableLiveData: MutableLiveData<Event<HouseDetailData>> = MutableLiveData()
     fun liveData() = mutableLiveData
 
-    fun initUI() = mutableLiveData.postValue(Event(HouseDetailData(statusType = HouseDetailStatus.INIT_UI)))
+    fun initUI(house: House) = mutableLiveData.postValue(Event(HouseDetailData(houseData = house, statusType = HouseDetailStatus.INIT_UI)))
 }
 
 data class HouseDetailData(

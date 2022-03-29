@@ -47,7 +47,7 @@ class HousesActivityViewModelTest {
     fun `setTabs - success state`() {
         val liveData = viewModel.liveData().testObserver()
         val successResult: ResponseResult.Success<House> = mock()
-        val house: House = HOUSE_MOCK
+        val house: House = MOCK_HOUSE_OK
 
         whenever(successResult.data).thenReturn(house)
         whenever(getHouseUseCase(Houses.GRYFFINDOR_HOUSE)).thenReturn(successResult)
@@ -69,7 +69,7 @@ class HousesActivityViewModelTest {
     fun `setTabs - failure state, empty data`() {
         val liveData = viewModel.liveData().testObserver()
         val successResult: ResponseResult.Success<House> = mock()
-        val house: House = HOUSE_MOCK_EMPTY
+        val house: House = MOCK_HOUSE_EMPTY
 
         whenever(successResult.data).thenReturn(house)
         whenever(getHouseUseCase(Houses.GRYFFINDOR_HOUSE)).thenReturn(successResult)
@@ -98,7 +98,7 @@ class HousesActivityViewModelTest {
     }
 
     companion object {
-        private val HOUSE_MOCK: House = House(
+        val MOCK_HOUSE_OK: House = House(
             id = "",
             name = "ValidName",
             houseColours = "",
@@ -107,10 +107,10 @@ class HousesActivityViewModelTest {
             element = "",
             ghost = "",
             commonRoom = "",
-            heads = emptyList(),
-            traits = emptyList()
+            heads = mock(),
+            traits = mock()
         )
-        private val HOUSE_MOCK_EMPTY: House = House(
+        val MOCK_HOUSE_EMPTY: House = House(
             id = "",
             name = "",
             houseColours = "",
