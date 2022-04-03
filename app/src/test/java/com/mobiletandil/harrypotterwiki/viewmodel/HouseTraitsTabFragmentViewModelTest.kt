@@ -3,11 +3,11 @@ package com.mobiletandil.harrypotterwiki.viewmodel
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.mobiletandil.domain.entity.House
 import com.nhaarman.mockitokotlin2.mock
-import kotlin.test.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
+import kotlin.test.assertEquals
 
 @RunWith(MockitoJUnitRunner::class)
 class HouseTraitsTabFragmentViewModelTest {
