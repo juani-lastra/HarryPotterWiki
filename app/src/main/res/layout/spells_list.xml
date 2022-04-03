@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/spells_name"
+    style="@style/HeadsDescriptionStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_houses_descriptions"
+    android:background="@drawable/list_background"
+    android:gravity="center"
+    android:padding="@dimen/padding_wizards_descriptions" />
+

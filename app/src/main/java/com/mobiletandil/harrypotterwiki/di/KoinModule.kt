@@ -5,6 +5,7 @@ import com.mobiletandil.harrypotterwiki.viewmodel.HouseHeadsTabFragmentViewModel
 import com.mobiletandil.harrypotterwiki.viewmodel.HouseTraitsTabFragmentViewModel
 import com.mobiletandil.harrypotterwiki.viewmodel.HousesActivityViewModel
 import com.mobiletandil.harrypotterwiki.viewmodel.MainActivityViewModel
+import com.mobiletandil.harrypotterwiki.viewmodel.SpellsActivityViewModel
 import com.mobiletandil.harrypotterwiki.viewmodel.SplashActivityViewModel
 import com.mobiletandil.harrypotterwiki.viewmodel.WizardsActivityViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -18,4 +19,5 @@ val viewModelModule = module {
     viewModel { HouseHeadsTabFragmentViewModel() }
     viewModel { HouseTraitsTabFragmentViewModel() }
     viewModel { WizardsActivityViewModel(get()) }
+    viewModel { SpellsActivityViewModel(get()) }
 }
