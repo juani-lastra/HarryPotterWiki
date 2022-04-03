@@ -1,13 +1,17 @@
 <resources>
     <string name="app_name">HarryPotterWiki</string>
+    <string name="prefix_elixirs">Elixirs: </string>
     <string name="no_connection_msg">Can\'t use the app right now, no data received, please make sure you are connected to internet</string>
     <string name="button_wizards">wizards</string>
     <string name="button_spells">spells</string>
     <string name="toast_show_error">Can not connect to the application right now, please try again later</string>
+    <string name="show_error_msg_text">An error occurred, please try again </string>
     <string name="house_founder_description">Founder: %1$s</string>
     <string name="house_colors_description">Colors: %1$s</string>
     <string name="house_animal_description">Animal: %1$s</string>
     <string name="house_element_description">Element: %1$s</string>
     <string name="house_ghost_description">Ghost: %1$s</string>
     <string name="house_common_room_description">Common Room: %1$s</string>
+    <string name="wizards_name_placeholder">Name: %1$s</string>
+    <string name="wizards_lastname_placeholder">Last Name: %1$s</string>
 </resources>

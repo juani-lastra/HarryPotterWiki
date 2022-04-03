@@ -31,12 +31,7 @@ class GetOneHouseUseCaseImpl(private val service: HarryPotterService, private va
                     ResponseResult.Success(database.getHouse(houseId))
                 }
                 is ResponseResult.Failure -> {
-                    val responseDBResult = database.getHouse(houseId)
-                    if (responseDBResult.name.isNotEmpty()) {
-                        ResponseResult.Success(responseDBResult)
-                    } else {
-                        ResponseResult.Success(responseDBResult)
-                    }
+                    ResponseResult.Success(database.getHouse(houseId))
                 }
             }
         } catch (e: Exception) {
