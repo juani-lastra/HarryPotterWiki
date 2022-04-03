@@ -1,9 +1,12 @@
 package com.mobiletandil.data.service
 
 import com.mobiletandil.data.mapper.transformToHouse
+import com.mobiletandil.data.mapper.transformToWizards
 import com.mobiletandil.data.service.api.HarryPotterApi
 import com.mobiletandil.data.service.response.HouseResultResponse
+import com.mobiletandil.data.service.response.WizardsResponse
 import com.mobiletandil.domain.entity.House
+import com.mobiletandil.domain.entity.Wizards
 import com.mobiletandil.domain.service.HarryPotterService
 import com.mobiletandil.domain.utils.ResponseResult
 
@@ -16,6 +19,20 @@ class HarryPotterServiceImpl : HarryPotterService {
             return if (response.isSuccessful) {
                 val body = response.body() as HouseResultResponse
                 return ResponseResult.Success(body.transformToHouse())
+            } else {
+                ResponseResult.Failure(Exception(EXCEPTION_MESSAGE))
+            }
+        } catch (e: Exception) {
+            ResponseResult.Failure(Exception(e))
+        }
+    }
+
+    override fun getWizards(): ResponseResult<List<Wizards>> {
+        return try {
+            val response = requestResponse.getAllWizards().execute()
+            return if (response.isSuccessful) {
+                val body = response.body() as List<WizardsResponse>
+                return ResponseResult.Success(body.map { it.transformToWizards() })
             } else {
                 ResponseResult.Failure(Exception(EXCEPTION_MESSAGE))
             }
