@@ -8,8 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mobiletandil.domain.entity.House
+import com.mobiletandil.domain.entity.HouseHead
+import com.mobiletandil.harrypotterwiki.activity.DetailedCharacterScreenActivity
 import com.mobiletandil.harrypotterwiki.adapter.HeadsDetailsAdapter
 import com.mobiletandil.harrypotterwiki.databinding.HouseHeadsTabFragmentBinding
+import com.mobiletandil.harrypotterwiki.listeners.HeadOnClickListener
 import com.mobiletandil.harrypotterwiki.utils.Constants.HOUSE_DATA_KEY
 import com.mobiletandil.harrypotterwiki.utils.Event
 import com.mobiletandil.harrypotterwiki.viewmodel.HouseHeadsData
@@ -17,7 +20,7 @@ import com.mobiletandil.harrypotterwiki.viewmodel.HouseHeadsStatus
 import com.mobiletandil.harrypotterwiki.viewmodel.HouseHeadsTabFragmentViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HouseHeadsTabFragment : Fragment() {
+class HouseHeadsTabFragment : Fragment(), HeadOnClickListener {
     private lateinit var binding: HouseHeadsTabFragmentBinding
     private val viewModel by viewModel<HouseHeadsTabFragmentViewModel>()
 
@@ -38,10 +41,21 @@ class HouseHeadsTabFragment : Fragment() {
             HouseHeadsStatus.INIT_UI -> {
                 binding.recyclerViewSearchList.apply {
                     layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-                    adapter = eventData.houseData?.heads?.let { HeadsDetailsAdapter(it) }
+                    adapter = eventData.houseData?.heads?.let { HeadsDetailsAdapter(it, this@HouseHeadsTabFragment) }
                 }
             }
+            HouseHeadsStatus.GO_TO_DETAILED_ACTIVITY -> startActivity(
+                eventData.headData?.let { head ->
+                    context?.let { context ->
+                        DetailedCharacterScreenActivity.getIntent(context, head = head)
+                    }
+                }
+            )
         }
+    }
+
+    override fun headOnClickListener(head: HouseHead) {
+        viewModel.goToDetailedActivity(head)
     }
 
     companion object {

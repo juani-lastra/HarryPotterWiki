@@ -12,13 +12,17 @@ import com.mobiletandil.domain.entity.Spells
 import com.mobiletandil.harrypotterwiki.R
 import com.mobiletandil.harrypotterwiki.adapter.SpellsAdapter
 import com.mobiletandil.harrypotterwiki.databinding.SpellsActivityBinding
+import com.mobiletandil.harrypotterwiki.listeners.SpellOnClickListener
 import com.mobiletandil.harrypotterwiki.utils.Event
 import com.mobiletandil.harrypotterwiki.viewmodel.SpellsActivityData
-import com.mobiletandil.harrypotterwiki.viewmodel.SpellsActivityStatus
+import com.mobiletandil.harrypotterwiki.viewmodel.SpellsActivityStatus.EMPTY_STATE
+import com.mobiletandil.harrypotterwiki.viewmodel.SpellsActivityStatus.ERROR_STATE
+import com.mobiletandil.harrypotterwiki.viewmodel.SpellsActivityStatus.GO_TO_DETAILED_SCREEN
+import com.mobiletandil.harrypotterwiki.viewmodel.SpellsActivityStatus.INIT_UI
 import com.mobiletandil.harrypotterwiki.viewmodel.SpellsActivityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SpellsActivity : AppCompatActivity() {
+class SpellsActivity : AppCompatActivity(), SpellOnClickListener {
     private lateinit var binding: SpellsActivityBinding
     private val viewModel by viewModel<SpellsActivityViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,16 +36,21 @@ class SpellsActivity : AppCompatActivity() {
     private val updateUIObserver = Observer<Event<SpellsActivityData>> { event ->
         val eventData = event.getContentIfNotHandled()
         when (eventData?.statusType) {
-            SpellsActivityStatus.INIT_UI -> eventData.listOfSpells?.let { initUI(it) }
-            SpellsActivityStatus.EMPTY_STATE -> setEmptyState()
-            SpellsActivityStatus.ERROR_STATE -> setErrorState()
+            INIT_UI -> eventData.listOfSpells?.let { initUI(it) }
+            EMPTY_STATE -> setEmptyState()
+            ERROR_STATE -> setErrorState()
+            GO_TO_DETAILED_SCREEN -> startActivity(DetailedCharacterScreenActivity.getIntent(this, spell = eventData.spell))
         }
+    }
+
+    override fun SpellOnClickListener(spell: Spells) {
+        viewModel.goToDetailedScreen(spell)
     }
 
     private fun initUI(listOfSpells: List<Spells>) {
         with(binding.recyclerViewSpellsList) {
             layoutManager = LinearLayoutManager(context, VERTICAL, false)
-            adapter = SpellsAdapter(listOfSpells)
+            adapter = SpellsAdapter(listOfSpells, this@SpellsActivity)
         }
     }
 

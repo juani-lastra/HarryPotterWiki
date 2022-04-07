@@ -9,6 +9,7 @@
         <item name="colorSecondary">@color/slytherin_heavy_grey</item>
         <item name="colorSecondaryVariant">@color/slytherin_grey</item>
         <item name="colorOnSecondary">@color/white</item>
+        <item name="colorOnSecondaryContainer">@color/blackTransparent</item>
 
         <item name="android:windowBackground">?attr/colorPrimary</item>
         <item name="android:textColor">?attr/colorOnSecondary</item>

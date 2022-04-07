@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">HarryPotterWiki</string>
     <string name="prefix_elixirs">Elixirs: </string>
+    <string name="text_is_verbal">Can be verbal</string>
+    <string name="text_is_not_verbal">Is not verbal</string>
     <string name="no_connection_msg">Can\'t use the app right now, no data received, please make sure you are connected to internet</string>
     <string name="button_wizards">wizards</string>
     <string name="button_spells">spells</string>
@@ -13,5 +15,13 @@
     <string name="house_ghost_description">Ghost: %1$s</string>
     <string name="house_common_room_description">Common Room: %1$s</string>
     <string name="wizards_name_placeholder">Name: %1$s</string>
+    <string name="wizards_only_name_placeholder">%1$s %2$s</string>
     <string name="wizards_lastname_placeholder">Last Name: %1$s</string>
+    <string name="spell_name_placeholder">Name: %1$s</string>
+    <string name="spell_incantation_placeholder">Incantation: %1$s</string>
+    <string name="spell_effect_placeholder">Effect: %1$s</string>
+    <string name="spell_type_placeholder">Type: %1$s</string>
+    <string name="spell_light_placeholder">Light: %1$s</string>
+    <string name="spell_creator_placeholder">Creator: %1$s</string>
+    <string name="spell_anonymous_field">Anonymous</string>
 </resources>

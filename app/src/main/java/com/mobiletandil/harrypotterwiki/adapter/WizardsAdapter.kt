@@ -7,15 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mobiletandil.domain.entity.Wizards
 import com.mobiletandil.harrypotterwiki.R
 import com.mobiletandil.harrypotterwiki.databinding.WizardsListBinding
-import com.mobiletandil.harrypotterwiki.utils.Constants.COMMA_SEPARATOR
-import com.mobiletandil.harrypotterwiki.utils.Constants.PREFIX_ELIXIRS
+import com.mobiletandil.harrypotterwiki.listeners.WizardOnClickListener
 
-class WizardsAdapter(private val wizards: List<Wizards>) :
+class WizardsAdapter(private val wizards: List<Wizards>, private val wizardOnClickListener: WizardOnClickListener) :
     RecyclerView.Adapter<WizardsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.wizards_list, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.wizards_list, parent, false), wizardOnClickListener
         )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -24,22 +23,17 @@ class WizardsAdapter(private val wizards: List<Wizards>) :
 
     override fun getItemCount() = wizards.size
 
-    class ViewHolder(itemView: View) :
+    class ViewHolder(itemView: View, private val wizardOnClickListener: WizardOnClickListener) :
         RecyclerView.ViewHolder(itemView) {
-        fun bind(wizards: Wizards) {
+        fun bind(wizard: Wizards) {
             with(WizardsListBinding.bind(itemView)) {
-                if (wizards.firstName.isNullOrBlank()) {
-                    wizardName.visibility = View.GONE
-                } else {
-                    wizardName.text = itemView.context.getString(R.string.wizards_name_placeholder, wizards.firstName)
+                itemView.setOnClickListener { wizardOnClickListener.WizardOnClickListener(wizard) }
+                when {
+                    wizard.firstName.isNullOrEmpty() -> wizardName.text = wizard.lastName
+                    else ->
+                        wizardName.text =
+                            itemView.context.getString(R.string.wizards_only_name_placeholder, wizard.firstName, wizard.lastName)
                 }
-                if (wizards.lastName.isNullOrBlank()) {
-                    wizardLastName.visibility = View.GONE
-                } else {
-                    wizardLastName.text = itemView.context.getString(R.string.wizards_lastname_placeholder, wizards.lastName)
-                }
-                wizardElixirs.text =
-                    wizards.elixirs?.joinToString(prefix = PREFIX_ELIXIRS, separator = COMMA_SEPARATOR) { it.name.toString() }
             }
         }
     }

@@ -9,6 +9,7 @@ import com.mobiletandil.domain.utils.ResponseResult
 import com.mobiletandil.harrypotterwiki.utils.Event
 import com.mobiletandil.harrypotterwiki.viewmodel.WizardsActivityStatus.EMPTY_STATE
 import com.mobiletandil.harrypotterwiki.viewmodel.WizardsActivityStatus.ERROR_STATE
+import com.mobiletandil.harrypotterwiki.viewmodel.WizardsActivityStatus.GO_TO_DETAILED_SCREEN
 import com.mobiletandil.harrypotterwiki.viewmodel.WizardsActivityStatus.INIT_UI
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,15 +36,21 @@ class WizardsActivityViewModel(private val getAllWizards: GetAllWizardsUseCase) 
             }
         }
     }
+
+    fun goToDetailedScreen(wizard: Wizards) {
+        mutableLiveData.postValue(Event(WizardsActivityData(wizard = wizard, statusType = GO_TO_DETAILED_SCREEN)))
+    }
 }
 
 data class WizardsActivityData(
     var statusType: WizardsActivityStatus,
-    var listOfWizards: List<Wizards>? = null
+    var listOfWizards: List<Wizards>? = null,
+    var wizard: Wizards? = null
 )
 
 enum class WizardsActivityStatus {
     INIT_UI,
     ERROR_STATE,
-    EMPTY_STATE
+    EMPTY_STATE,
+    GO_TO_DETAILED_SCREEN
 }

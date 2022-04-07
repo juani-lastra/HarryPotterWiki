@@ -9,6 +9,7 @@ import com.mobiletandil.domain.utils.ResponseResult
 import com.mobiletandil.harrypotterwiki.utils.Event
 import com.mobiletandil.harrypotterwiki.viewmodel.SpellsActivityStatus.EMPTY_STATE
 import com.mobiletandil.harrypotterwiki.viewmodel.SpellsActivityStatus.ERROR_STATE
+import com.mobiletandil.harrypotterwiki.viewmodel.SpellsActivityStatus.GO_TO_DETAILED_SCREEN
 import com.mobiletandil.harrypotterwiki.viewmodel.SpellsActivityStatus.INIT_UI
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,15 +36,21 @@ class SpellsActivityViewModel(private val getAllSpells: GetAllSpellsUseCase) : V
             }
         }
     }
+
+    fun goToDetailedScreen(spell: Spells) {
+        mutableLiveData.postValue(Event(SpellsActivityData(spell = spell, statusType = GO_TO_DETAILED_SCREEN)))
+    }
 }
 
 data class SpellsActivityData(
     var statusType: SpellsActivityStatus,
-    var listOfSpells: List<Spells>? = null
+    var listOfSpells: List<Spells>? = null,
+    var spell: Spells? = null
 )
 
 enum class SpellsActivityStatus {
     INIT_UI,
     ERROR_STATE,
-    EMPTY_STATE
+    EMPTY_STATE,
+    GO_TO_DETAILED_SCREEN
 }

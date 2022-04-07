@@ -1,5 +1,6 @@
 package com.mobiletandil.harrypotterwiki.di
 
+import com.mobiletandil.harrypotterwiki.viewmodel.DetailedCharacterScreenViewModel
 import com.mobiletandil.harrypotterwiki.viewmodel.HouseDetailTabFragmentViewModel
 import com.mobiletandil.harrypotterwiki.viewmodel.HouseHeadsTabFragmentViewModel
 import com.mobiletandil.harrypotterwiki.viewmodel.HouseTraitsTabFragmentViewModel
@@ -20,4 +21,5 @@ val viewModelModule = module {
     viewModel { HouseTraitsTabFragmentViewModel() }
     viewModel { WizardsActivityViewModel(get()) }
     viewModel { SpellsActivityViewModel(get()) }
+    viewModel { DetailedCharacterScreenViewModel() }
 }

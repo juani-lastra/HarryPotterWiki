@@ -1,5 +1,7 @@
 package com.mobiletandil.domain.entity
 
+import java.io.Serializable
+
 data class Spells(
     val id: String,
     val name: String,
@@ -9,4 +11,4 @@ data class Spells(
     val type: String?,
     val light: String?,
     val creator: String?
-)
+): Serializable
