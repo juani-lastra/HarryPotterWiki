@@ -24,4 +24,7 @@
     <string name="spell_light_placeholder">Light: %1$s</string>
     <string name="spell_creator_placeholder">Creator: %1$s</string>
     <string name="spell_anonymous_field">Anonymous</string>
+    <string name="toolbar_title_head">Head Character Description</string>
+    <string name="toolbar_title_wizard">Wizard Character Description</string>
+    <string name="toolbar_title_spell">Spell Description</string>
 </resources>

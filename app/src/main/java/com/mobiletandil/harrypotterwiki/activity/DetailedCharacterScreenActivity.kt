@@ -21,19 +21,17 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class DetailedCharacterScreenActivity : AppCompatActivity() {
     private val viewModel by viewModel<DetailedCharacterScreenViewModel>()
     private lateinit var binding: ActivityDetailedCharacterScreenBinding
-    private var head: HouseHead? = null
-    private var wizard: Wizards? = null
-    private var spell: Spells? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailedCharacterScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        head = intent.extras?.get(HEAD) as HouseHead?
-        wizard = intent.extras?.get(WIZARD) as Wizards?
-        spell = intent.extras?.get(SPELL) as Spells?
         viewModel.liveData().observe(this, updateUIObserver)
-        viewModel.initUI(head, wizard, spell)
+        viewModel.initUI(
+            intent.extras?.get(HEAD) as HouseHead?,
+            intent.extras?.get(WIZARD) as Wizards?,
+            intent.extras?.get(SPELL) as Spells?
+        )
     }
 
     private val updateUIObserver = Observer<Event<DetailedCharacterData>> { event ->
@@ -56,6 +54,7 @@ class DetailedCharacterScreenActivity : AppCompatActivity() {
 
     private fun initUIHead(headData: HouseHead?) {
         with(binding) {
+            toolbar.text = getString(R.string.toolbar_title_head)
             fieldOne.visibility = View.VISIBLE
             fieldTwo.visibility = View.VISIBLE
             fieldOne.text = getString(R.string.wizards_name_placeholder, headData?.firstName)
@@ -65,6 +64,7 @@ class DetailedCharacterScreenActivity : AppCompatActivity() {
 
     private fun initUIWizard(wizardData: Wizards?) {
         with(binding) {
+            toolbar.text = getString(R.string.toolbar_title_wizard)
             fieldTwo.visibility = View.VISIBLE
             fieldThree.visibility = View.VISIBLE
             if (wizardData?.firstName.isNullOrEmpty()) {
@@ -74,7 +74,7 @@ class DetailedCharacterScreenActivity : AppCompatActivity() {
                 fieldOne.text = getString(R.string.wizards_name_placeholder, wizardData?.firstName)
                 fieldTwo.text = getString(R.string.wizards_lastname_placeholder, wizardData?.lastName)
             }
-            fieldThree.text = wizard?.elixirs?.joinToString(
+            fieldThree.text = wizardData?.elixirs?.joinToString(
                 prefix = Constants.PREFIX_ELIXIRS,
                 separator = Constants.COMMA_SEPARATOR
             ) { it.name.toString() }
@@ -83,6 +83,7 @@ class DetailedCharacterScreenActivity : AppCompatActivity() {
 
     private fun initUISpell(spellData: Spells?) {
         with(binding) {
+            toolbar.text = getString(R.string.toolbar_title_spell)
             fieldOne.visibility = View.VISIBLE
             fieldTwo.visibility = View.VISIBLE
             fieldThree.visibility = View.VISIBLE

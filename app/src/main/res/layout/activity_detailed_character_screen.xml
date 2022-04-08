@@ -3,8 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.HarryPotterWiki"
-    android:background="@drawable/app_background">
+    android:background="@drawable/app_background"
+    android:theme="@style/Theme.HarryPotterWiki">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorOnSecondaryContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/toolbar"
+            style="@style/ToolbarTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
         android:id="@+id/no_connection_text"
@@ -20,8 +37,8 @@
         android:id="@+id/field_description_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/detail_background"
         android:layout_margin="@dimen/margin_detailed_descriptions"
+        android:background="@drawable/detail_background"
         android:padding="@dimen/padding_wizards_descriptions"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,9 +49,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            app:drawableStartCompat="@drawable/star_icon"
             app:layout_constraintBottom_toTopOf="@+id/field_two"
-            app:layout_constraintTop_toTopOf="parent"
-            app:drawableStartCompat="@drawable/star_icon" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/field_two"
@@ -42,9 +59,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            app:drawableLeftCompat="@drawable/star_icon"
             app:layout_constraintBottom_toTopOf="@+id/field_three"
-            app:layout_constraintTop_toBottomOf="@+id/field_one"
-            app:drawableLeftCompat="@drawable/star_icon"/>
+            app:layout_constraintTop_toBottomOf="@+id/field_one" />
 
         <TextView
             android:id="@+id/field_three"
@@ -52,9 +69,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            app:drawableLeftCompat="@drawable/star_icon"
             app:layout_constraintBottom_toTopOf="@+id/field_four"
-            app:layout_constraintTop_toBottomOf="@+id/field_two"
-            app:drawableLeftCompat="@drawable/star_icon"/>
+            app:layout_constraintTop_toBottomOf="@+id/field_two" />
 
         <TextView
             android:id="@+id/field_four"
@@ -62,9 +79,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            app:drawableLeftCompat="@drawable/star_icon"
             app:layout_constraintBottom_toTopOf="@+id/field_five"
-            app:layout_constraintTop_toBottomOf="@+id/field_three"
-            app:drawableLeftCompat="@drawable/star_icon"/>
+            app:layout_constraintTop_toBottomOf="@+id/field_three" />
 
         <TextView
             android:id="@+id/field_five"
@@ -72,9 +89,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            app:drawableLeftCompat="@drawable/star_icon"
             app:layout_constraintBottom_toTopOf="@+id/field_six"
-            app:layout_constraintTop_toBottomOf="@+id/field_four"
-            app:drawableLeftCompat="@drawable/star_icon"/>
+            app:layout_constraintTop_toBottomOf="@+id/field_four" />
 
         <TextView
             android:id="@+id/field_six"
@@ -82,9 +99,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            app:drawableLeftCompat="@drawable/star_icon"
             app:layout_constraintBottom_toTopOf="@id/field_seven"
-            app:layout_constraintTop_toBottomOf="@+id/field_five"
-            app:drawableLeftCompat="@drawable/star_icon"/>
+            app:layout_constraintTop_toBottomOf="@+id/field_five" />
 
         <TextView
             android:id="@+id/field_seven"
@@ -92,9 +109,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            app:drawableLeftCompat="@drawable/star_icon"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/field_six"
-            app:drawableLeftCompat="@drawable/star_icon"/>
+            app:layout_constraintTop_toBottomOf="@+id/field_six" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
