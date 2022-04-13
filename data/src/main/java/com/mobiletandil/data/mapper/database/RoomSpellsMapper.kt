@@ -1,9 +1,9 @@
 package com.mobiletandil.data.mapper.database
 
 import com.mobiletandil.data.database.entity.DBRoomSpells
-import com.mobiletandil.domain.entity.Spells
+import com.mobiletandil.domain.entity.Spell
 
-fun Spells.transformToRoomSpells() = DBRoomSpells(
+fun Spell.transformToRoomSpells() = DBRoomSpells(
     id = this.id,
     name = this.name,
     incantation = this.incantation,
@@ -14,7 +14,7 @@ fun Spells.transformToRoomSpells() = DBRoomSpells(
     creator = this.creator
 )
 
-fun DBRoomSpells.transformToSpells() = Spells(
+fun DBRoomSpells.transformToSpells() = Spell(
     id = this.id,
     name = this.name,
     incantation = this.incantation,

@@ -26,6 +26,9 @@ interface HarryPotterDao {
     @Query("SELECT * FROM DBRoomWizards")
     fun getAllWizards(): List<DBRoomWizards>
 
+    @Query("SELECT * FROM DBRoomWizards WHERE id = :wizardID")
+    fun getOneWizard(wizardID: String): DBRoomWizards
+
     @Query("SELECT * FROM DBRoomSpells")
     fun getSpells(): List<DBRoomSpells>
 }

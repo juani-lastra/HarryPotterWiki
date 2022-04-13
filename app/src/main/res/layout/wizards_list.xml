@@ -1,37 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/wizard_name"
+    style="@style/HeadsDescriptionStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_houses_descriptions"
-    android:padding="@dimen/padding_wizards_descriptions"
-    android:background="@drawable/list_background">
-
-    <TextView
-        android:id="@+id/wizard_name"
-        style="@style/HeadsDescriptionStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/wizard_last_name"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/wizard_last_name"
-        style="@style/HeadsDescriptionStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/wizard_elixirs"
-        app:layout_constraintTop_toBottomOf="@+id/wizard_name" />
-
-    <TextView
-        android:id="@+id/wizard_elixirs"
-        style="@style/HeadsDescriptionStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wizard_last_name" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    android:background="@drawable/list_background"
+    android:gravity="center"
+    android:padding="@dimen/padding_wizards_descriptions" />

@@ -1,6 +1,6 @@
 package com.mobiletandil.domain.entity
 
-data class Spells(
+data class Spell(
     val id: String,
     val name: String,
     val incantation: String?,

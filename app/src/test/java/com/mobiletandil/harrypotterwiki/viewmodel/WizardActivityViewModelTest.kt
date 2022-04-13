@@ -1,7 +1,7 @@
 package com.mobiletandil.harrypotterwiki.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.mobiletandil.domain.entity.Wizards
+import com.mobiletandil.domain.entity.Wizard
 import com.mobiletandil.domain.usecase.GetAllWizardsUseCase
 import com.mobiletandil.domain.utils.ResponseResult
 import com.nhaarman.mockitokotlin2.mock
@@ -22,7 +22,7 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
-class WizardsActivityViewModelTest {
+class WizardActivityViewModelTest {
     private lateinit var viewModel: WizardsActivityViewModel
     private val getWizardsUseCase: GetAllWizardsUseCase = mock()
     private val testDispatcher = TestCoroutineDispatcher()
@@ -45,8 +45,8 @@ class WizardsActivityViewModelTest {
     @Test
     fun `InitUi - success state`() {
         val liveData = viewModel.liveData().testObserver()
-        val successResult: ResponseResult.Success<List<Wizards>> = mock()
-        val wizards: List<Wizards> = mock()
+        val successResult: ResponseResult.Success<List<Wizard>> = mock()
+        val wizards: List<Wizard> = mock()
 
         whenever(successResult.data).thenReturn(wizards)
         whenever(getWizardsUseCase()).thenReturn(successResult)
@@ -67,8 +67,8 @@ class WizardsActivityViewModelTest {
     @Test
     fun `setTabs - empty state`() {
         val liveData = viewModel.liveData().testObserver()
-        val successResult: ResponseResult.Success<List<Wizards>> = mock()
-        val wizards: List<Wizards> = emptyList()
+        val successResult: ResponseResult.Success<List<Wizard>> = mock()
+        val wizards: List<Wizard> = emptyList()
 
         whenever(successResult.data).thenReturn(wizards)
         whenever(getWizardsUseCase()).thenReturn(successResult)
