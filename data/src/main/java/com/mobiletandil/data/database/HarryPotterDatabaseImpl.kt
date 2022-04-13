@@ -15,11 +15,11 @@ import com.mobiletandil.data.mapper.database.transformToRoomHouse
 import com.mobiletandil.data.mapper.database.transformToRoomSpells
 import com.mobiletandil.data.mapper.database.transformToRoomWizards
 import com.mobiletandil.data.mapper.database.transformToSpells
-import com.mobiletandil.data.mapper.database.transformToWizards
+import com.mobiletandil.data.mapper.database.transformToWizard
 import com.mobiletandil.data.utils.Converter
 import com.mobiletandil.domain.entity.House
-import com.mobiletandil.domain.entity.Spells
-import com.mobiletandil.domain.entity.Wizards
+import com.mobiletandil.domain.entity.Spell
+import com.mobiletandil.domain.entity.Wizard
 import com.mobiletandil.domain.service.HarryPotterDatabase
 
 @Database(
@@ -45,15 +45,17 @@ abstract class HarryPotterDatabaseImpl : RoomDatabase(), HarryPotterDatabase {
         harryPotterDao().insertHouse(house.transformToRoomHouse())
     }
 
-    override fun getAllWizards(): List<Wizards> = harryPotterDao().getAllWizards().map { it.transformToWizards() }
+    override fun getAllWizards(): List<Wizard> = harryPotterDao().getAllWizards().map { it.transformToWizard() }
 
-    override fun insertWizards(wizards: List<Wizards>) {
+    override fun getOneWizard(wizardID: String): Wizard = harryPotterDao().getOneWizard(wizardID).transformToWizard()
+
+    override fun insertWizards(wizards: List<Wizard>) {
         harryPotterDao().insertWizards(wizards.map { it.transformToRoomWizards() })
     }
 
-    override fun getSpells(): List<Spells> = harryPotterDao().getSpells().map { it.transformToSpells() }
+    override fun getSpells(): List<Spell> = harryPotterDao().getSpells().map { it.transformToSpells() }
 
-    override fun insertSpells(spells: List<Spells>) {
+    override fun insertSpells(spells: List<Spell>) {
         harryPotterDao().insertSpells(spells.map { it.transformToRoomSpells() })
     }
 }

@@ -8,8 +8,8 @@ import com.mobiletandil.data.service.response.HouseResultResponse
 import com.mobiletandil.data.service.response.SpellsResponse
 import com.mobiletandil.data.service.response.WizardsResponse
 import com.mobiletandil.domain.entity.House
-import com.mobiletandil.domain.entity.Spells
-import com.mobiletandil.domain.entity.Wizards
+import com.mobiletandil.domain.entity.Spell
+import com.mobiletandil.domain.entity.Wizard
 import com.mobiletandil.domain.service.HarryPotterService
 import com.mobiletandil.domain.utils.ResponseResult
 
@@ -30,7 +30,7 @@ class HarryPotterServiceImpl : HarryPotterService {
         }
     }
 
-    override fun getWizards(): ResponseResult<List<Wizards>> {
+    override fun getWizards(): ResponseResult<List<Wizard>> {
         return try {
             val response = requestResponse.getAllWizards().execute()
             return if (response.isSuccessful) {
@@ -44,7 +44,7 @@ class HarryPotterServiceImpl : HarryPotterService {
         }
     }
 
-    override fun getSpells(): ResponseResult<List<Spells>> {
+    override fun getSpells(): ResponseResult<List<Spell>> {
         return try {
             val response = requestResponse.getAllSpells().execute()
             return if (response.isSuccessful) {

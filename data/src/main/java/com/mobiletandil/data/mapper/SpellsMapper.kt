@@ -1,9 +1,9 @@
 package com.mobiletandil.data.mapper
 
 import com.mobiletandil.data.service.response.SpellsResponse
-import com.mobiletandil.domain.entity.Spells
+import com.mobiletandil.domain.entity.Spell
 
-fun SpellsResponse.transformToSpells() = Spells(
+fun SpellsResponse.transformToSpells() = Spell(
     id = this.id,
     name = this.name,
     incantation = this.incantation,

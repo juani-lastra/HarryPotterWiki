@@ -1,8 +1,8 @@
 package com.mobiletandil.harrypotterwiki.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.mobiletandil.domain.entity.Spells
-import com.mobiletandil.domain.usecase.GetAllSpellsUseCase
+import com.mobiletandil.domain.entity.Wizard
+import com.mobiletandil.domain.usecase.GetOneWizardsUseCase
 import com.mobiletandil.domain.utils.ResponseResult
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
@@ -22,9 +22,9 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
-class SpellsActivityViewModelTest {
-    private lateinit var viewModel: SpellsActivityViewModel
-    private val getSpellsUseCase: GetAllSpellsUseCase = mock()
+class WizardDetailActivityViewModelTest {
+    private lateinit var viewModel: WizardDetailActivityViewModel
+    private val getOneWizardUseCase: GetOneWizardsUseCase = mock()
     private val testDispatcher = TestCoroutineDispatcher()
 
     @get:Rule
@@ -33,7 +33,7 @@ class SpellsActivityViewModelTest {
     @Before
     fun init() {
         Dispatchers.setMain(testDispatcher)
-        viewModel = SpellsActivityViewModel(getSpellsUseCase)
+        viewModel = WizardDetailActivityViewModel(getOneWizardUseCase)
     }
 
     @After
@@ -43,56 +43,60 @@ class SpellsActivityViewModelTest {
     }
 
     @Test
-    fun `InitUi - success state`() {
+    fun `initUI - success state`() {
         val liveData = viewModel.liveData().testObserver()
-        val successResult: ResponseResult.Success<List<Spells>> = mock()
-        val spells: List<Spells> = mock()
+        val successResult: ResponseResult.Success<Wizard> = mock()
+        val wizard = Wizard(id = WIZARD_ID, null, null, null)
 
-        whenever(successResult.data).thenReturn(spells)
-        whenever(getSpellsUseCase()).thenReturn(successResult)
+        whenever(successResult.data).thenReturn(wizard)
         runBlocking {
-            viewModel.initUI().join()
+            whenever(getOneWizardUseCase(WIZARD_ID)).thenReturn(successResult)
+            viewModel.initUI(WIZARD_ID).join()
         }
         assertEquals(
-            SpellsActivityStatus.INIT_UI,
+            WizardDetailActivityStatus.INIT_UI,
             liveData.observedValues.first()?.peekContent()?.statusType
         )
 
         assertEquals(
-            spells,
-            liveData.observedValues.first()?.peekContent()?.listOfSpells
+            wizard,
+            liveData.observedValues.first()?.peekContent()?.data
         )
     }
 
     @Test
-    fun `InitUi - empty state`() {
+    fun `initUI - empty state`() {
         val liveData = viewModel.liveData().testObserver()
-        val successResult: ResponseResult.Success<List<Spells>> = mock()
-        val spells: List<Spells> = emptyList()
+        val successResult: ResponseResult.Success<Wizard> = mock()
+        val wizard = Wizard("", null, null, null)
 
-        whenever(successResult.data).thenReturn(spells)
-        whenever(getSpellsUseCase()).thenReturn(successResult)
+        whenever(successResult.data).thenReturn(wizard)
+        whenever(getOneWizardUseCase(WIZARD_ID)).thenReturn(successResult)
         runBlocking {
-            viewModel.initUI().join()
+            viewModel.initUI(WIZARD_ID).join()
         }
         assertEquals(
-            SpellsActivityStatus.EMPTY_STATE,
+            WizardDetailActivityStatus.EMPTY_STATE,
             liveData.observedValues.first()?.peekContent()?.statusType
         )
     }
 
     @Test
-    fun `InitUi - failure state`() {
+    fun `initUI - failure state`() {
         val liveData = viewModel.liveData().testObserver()
         val failureResult: ResponseResult.Failure = mock()
 
-        whenever(getSpellsUseCase()).thenReturn(failureResult)
+        whenever(getOneWizardUseCase(WIZARD_ID)).thenReturn(failureResult)
         runBlocking {
-            viewModel.initUI().join()
+            viewModel.initUI(WIZARD_ID).join()
         }
         assertEquals(
-            SpellsActivityStatus.ERROR_STATE,
+            WizardDetailActivityStatus.ERROR_STATE,
             liveData.observedValues.first()?.peekContent()?.statusType
         )
+    }
+
+    companion object {
+        const val WIZARD_ID = "wizard id"
     }
 }

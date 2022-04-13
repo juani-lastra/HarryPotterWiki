@@ -1,14 +1,14 @@
 package com.mobiletandil.data.mapper.database
 
 import com.mobiletandil.data.database.entity.DBRoomElixirs
-import com.mobiletandil.domain.entity.Elixirs
+import com.mobiletandil.domain.entity.Elixir
 
-fun Elixirs.transformToRoomElixir() = DBRoomElixirs(
+fun Elixir.transformToRoomElixir() = DBRoomElixirs(
     id = this.id,
     name = this.name
 )
 
-fun DBRoomElixirs.transformToElixir() = Elixirs(
+fun DBRoomElixirs.transformToElixir() = Elixir(
     id = this.id,
     name = this.name
 )

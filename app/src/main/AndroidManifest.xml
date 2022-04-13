@@ -33,6 +33,9 @@
         <activity
             android:name=".activity.WizardsActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WizardDetailActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
