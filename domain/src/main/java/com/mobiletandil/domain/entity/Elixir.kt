@@ -1,6 +1,6 @@
 package com.mobiletandil.domain.entity
 
-data class Elixirs(
+data class Elixir(
     val id: String,
     val name: String?
 )

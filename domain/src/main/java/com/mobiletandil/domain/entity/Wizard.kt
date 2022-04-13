@@ -1,8 +1,8 @@
 package com.mobiletandil.domain.entity
 
-data class Wizards(
+data class Wizard(
     val id: String,
     val firstName: String?,
     val lastName: String?,
-    val elixirs: List<Elixirs>?
+    val elixirs: List<Elixir>?
 )

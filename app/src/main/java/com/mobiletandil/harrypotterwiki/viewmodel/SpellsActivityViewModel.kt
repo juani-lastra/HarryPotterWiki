@@ -3,7 +3,7 @@ package com.mobiletandil.harrypotterwiki.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mobiletandil.domain.entity.Spells
+import com.mobiletandil.domain.entity.Spell
 import com.mobiletandil.domain.usecase.GetAllSpellsUseCase
 import com.mobiletandil.domain.utils.ResponseResult
 import com.mobiletandil.harrypotterwiki.utils.Event
@@ -22,7 +22,7 @@ class SpellsActivityViewModel(private val getAllSpells: GetAllSpellsUseCase) : V
     fun initUI() = viewModelScope.launch {
         withContext(Dispatchers.IO) { getAllSpells() }.let {
             when (it) {
-                is ResponseResult.Success<List<Spells>> -> {
+                is ResponseResult.Success<List<Spell>> -> {
                     if (it.data.isNotEmpty()) {
                         mutableLiveData.postValue(Event(SpellsActivityData(listOfSpells = it.data, statusType = INIT_UI)))
                     } else {
@@ -39,7 +39,7 @@ class SpellsActivityViewModel(private val getAllSpells: GetAllSpellsUseCase) : V
 
 data class SpellsActivityData(
     var statusType: SpellsActivityStatus,
-    var listOfSpells: List<Spells>? = null
+    var listOfSpells: List<Spell> = emptyList()
 )
 
 enum class SpellsActivityStatus {

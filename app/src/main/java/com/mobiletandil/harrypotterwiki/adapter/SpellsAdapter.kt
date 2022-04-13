@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mobiletandil.domain.entity.Spells
+import com.mobiletandil.domain.entity.Spell
 import com.mobiletandil.harrypotterwiki.R
 import com.mobiletandil.harrypotterwiki.databinding.SpellsListBinding
 
-class SpellsAdapter(private val spells: List<Spells>) :
+class SpellsAdapter(private val spells: List<Spell>) :
     RecyclerView.Adapter<SpellsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -24,9 +24,9 @@ class SpellsAdapter(private val spells: List<Spells>) :
 
     class ViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
-        fun bind(spells: Spells) {
+        fun bind(spell: Spell) {
             with(SpellsListBinding.bind(itemView)) {
-                spellsName.text = spells.name
+                spellsName.text = spell.name
             }
         }
     }

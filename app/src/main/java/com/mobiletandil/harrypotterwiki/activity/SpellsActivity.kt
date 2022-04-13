@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
-import com.mobiletandil.domain.entity.Spells
+import com.mobiletandil.domain.entity.Spell
 import com.mobiletandil.harrypotterwiki.R
 import com.mobiletandil.harrypotterwiki.adapter.SpellsAdapter
 import com.mobiletandil.harrypotterwiki.databinding.SpellsActivityBinding
@@ -32,13 +32,13 @@ class SpellsActivity : AppCompatActivity() {
     private val updateUIObserver = Observer<Event<SpellsActivityData>> { event ->
         val eventData = event.getContentIfNotHandled()
         when (eventData?.statusType) {
-            SpellsActivityStatus.INIT_UI -> eventData.listOfSpells?.let { initUI(it) }
+            SpellsActivityStatus.INIT_UI -> initUI(eventData.listOfSpells)
             SpellsActivityStatus.EMPTY_STATE -> setEmptyState()
             SpellsActivityStatus.ERROR_STATE -> setErrorState()
         }
     }
 
-    private fun initUI(listOfSpells: List<Spells>) {
+    private fun initUI(listOfSpells: List<Spell>) {
         with(binding.recyclerViewSpellsList) {
             layoutManager = LinearLayoutManager(context, VERTICAL, false)
             adapter = SpellsAdapter(listOfSpells)
