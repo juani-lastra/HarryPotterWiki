@@ -17,4 +17,10 @@
     <string name="wizards_name_placeholder">Name: %1$s</string>
     <string name="wizards_only_name_placeholder">%1$s %2$s</string>
     <string name="wizards_lastname_placeholder">Last Name: %1$s</string>
+    <string name="spell_anonymous_placeholder">Anonymous</string>
+    <string name="spell_incantation">Incantation: %1$s</string>
+    <string name="spell_effect">Effect: %1$s</string>
+    <string name="spell_creator">Creator: %1$s</string>
+    <string name="spell_light">Light: %1$s</string>
+    <string name="spell_type">Type: %1$s</string>
 </resources>

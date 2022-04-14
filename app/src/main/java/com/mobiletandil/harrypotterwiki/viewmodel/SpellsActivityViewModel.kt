@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mobiletandil.domain.entity.Spell
 import com.mobiletandil.domain.usecase.GetAllSpellsUseCase
+import com.mobiletandil.domain.utils.Constants
 import com.mobiletandil.domain.utils.ResponseResult
 import com.mobiletandil.harrypotterwiki.utils.Event
 import com.mobiletandil.harrypotterwiki.viewmodel.SpellsActivityStatus.EMPTY_STATE
@@ -35,15 +36,21 @@ class SpellsActivityViewModel(private val getAllSpells: GetAllSpellsUseCase) : V
             }
         }
     }
+
+    fun goToDetailedScreen(spellID: String) {
+        mutableLiveData.postValue(Event(SpellsActivityData(spell = spellID, statusType = SpellsActivityStatus.GO_TO_DETAILED_SCREEN)))
+    }
 }
 
 data class SpellsActivityData(
     var statusType: SpellsActivityStatus,
-    var listOfSpells: List<Spell> = emptyList()
+    var listOfSpells: List<Spell> = emptyList(),
+    var spell: String = Constants.EMPTY_STRING
 )
 
 enum class SpellsActivityStatus {
     INIT_UI,
     ERROR_STATE,
-    EMPTY_STATE
+    EMPTY_STATE,
+    GO_TO_DETAILED_SCREEN
 }

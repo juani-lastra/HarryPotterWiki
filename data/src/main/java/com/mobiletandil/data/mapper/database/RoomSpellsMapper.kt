@@ -14,7 +14,7 @@ fun Spell.transformToRoomSpells() = DBRoomSpells(
     creator = this.creator
 )
 
-fun DBRoomSpells.transformToSpells() = Spell(
+fun DBRoomSpells.transformToSpell() = Spell(
     id = this.id,
     name = this.name,
     incantation = this.incantation,

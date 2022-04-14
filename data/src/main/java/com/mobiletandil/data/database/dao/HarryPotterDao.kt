@@ -31,4 +31,7 @@ interface HarryPotterDao {
 
     @Query("SELECT * FROM DBRoomSpells")
     fun getSpells(): List<DBRoomSpells>
+
+    @Query("SELECT * FROM DBRoomSpells WHERE id = :spellID")
+    fun getOneSpell(spellID: String): DBRoomSpells
 }
