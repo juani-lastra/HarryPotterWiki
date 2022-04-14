@@ -5,6 +5,7 @@ import com.mobiletandil.harrypotterwiki.viewmodel.HouseHeadsTabFragmentViewModel
 import com.mobiletandil.harrypotterwiki.viewmodel.HouseTraitsTabFragmentViewModel
 import com.mobiletandil.harrypotterwiki.viewmodel.HousesActivityViewModel
 import com.mobiletandil.harrypotterwiki.viewmodel.MainActivityViewModel
+import com.mobiletandil.harrypotterwiki.viewmodel.SpellDetailActivityViewModel
 import com.mobiletandil.harrypotterwiki.viewmodel.SpellsActivityViewModel
 import com.mobiletandil.harrypotterwiki.viewmodel.SplashActivityViewModel
 import com.mobiletandil.harrypotterwiki.viewmodel.WizardDetailActivityViewModel
@@ -22,4 +23,5 @@ val viewModelModule = module {
     viewModel { WizardsActivityViewModel(get()) }
     viewModel { WizardDetailActivityViewModel(get()) }
     viewModel { SpellsActivityViewModel(get()) }
+    viewModel { SpellDetailActivityViewModel(get()) }
 }
