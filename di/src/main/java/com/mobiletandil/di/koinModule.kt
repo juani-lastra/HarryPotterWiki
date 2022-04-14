@@ -11,6 +11,8 @@ import com.mobiletandil.domain.usecase.GetAllWizardsUseCase
 import com.mobiletandil.domain.usecase.GetAllWizardsUseCaseImpl
 import com.mobiletandil.domain.usecase.GetOneHouseUseCase
 import com.mobiletandil.domain.usecase.GetOneHouseUseCaseImpl
+import com.mobiletandil.domain.usecase.GetOneSpellUseCase
+import com.mobiletandil.domain.usecase.GetOneSpellUseCaseImpl
 import com.mobiletandil.domain.usecase.GetOneWizardsUseCase
 import com.mobiletandil.domain.usecase.GetOneWizardsUseCaseImpl
 import org.koin.dsl.module
@@ -20,6 +22,7 @@ val useCaseModule = module {
     single<GetAllWizardsUseCase> { GetAllWizardsUseCaseImpl(get(), get()) }
     single<GetOneWizardsUseCase> { GetOneWizardsUseCaseImpl(get()) }
     single<GetAllSpellsUseCase> { GetAllSpellsUseCaseImpl(get(), get()) }
+    single<GetOneSpellUseCase> { GetOneSpellUseCaseImpl(get()) }
 }
 
 val serviceModule = module {

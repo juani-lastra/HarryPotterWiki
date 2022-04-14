@@ -2,7 +2,6 @@ package com.mobiletandil.domain.usecase
 
 import com.mobiletandil.domain.entity.Wizard
 import com.mobiletandil.domain.service.HarryPotterDatabase
-import com.mobiletandil.domain.service.HarryPotterService
 import com.mobiletandil.domain.utils.ResponseResult
 
 interface GetOneWizardsUseCase {
@@ -14,7 +13,6 @@ class GetOneWizardsUseCaseImpl(private val database: HarryPotterDatabase) : GetO
         return try {
             ResponseResult.Success(database.getOneWizard(wizardID))
         } catch (e: Exception) {
-            println(e)
             ResponseResult.Failure(e)
         }
     }

@@ -10,6 +10,7 @@ interface HarryPotterDatabase {
     fun insertWizards(wizards: List<Wizard>)
     fun getAllWizards(): List<Wizard>
     fun getOneWizard(wizardID: String): Wizard
+    fun getOneSpell(spellID: String): Spell
     fun insertSpells(spells: List<Spell>)
     fun getSpells(): List<Spell>
 

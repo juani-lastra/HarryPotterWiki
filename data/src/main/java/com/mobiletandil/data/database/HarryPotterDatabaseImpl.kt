@@ -14,7 +14,7 @@ import com.mobiletandil.data.mapper.database.transformToHouse
 import com.mobiletandil.data.mapper.database.transformToRoomHouse
 import com.mobiletandil.data.mapper.database.transformToRoomSpells
 import com.mobiletandil.data.mapper.database.transformToRoomWizards
-import com.mobiletandil.data.mapper.database.transformToSpells
+import com.mobiletandil.data.mapper.database.transformToSpell
 import com.mobiletandil.data.mapper.database.transformToWizard
 import com.mobiletandil.data.utils.Converter
 import com.mobiletandil.domain.entity.House
@@ -53,7 +53,9 @@ abstract class HarryPotterDatabaseImpl : RoomDatabase(), HarryPotterDatabase {
         harryPotterDao().insertWizards(wizards.map { it.transformToRoomWizards() })
     }
 
-    override fun getSpells(): List<Spell> = harryPotterDao().getSpells().map { it.transformToSpells() }
+    override fun getSpells(): List<Spell> = harryPotterDao().getSpells().map { it.transformToSpell() }
+
+    override fun getOneSpell(spellID: String): Spell = harryPotterDao().getOneSpell(spellID).transformToSpell()
 
     override fun insertSpells(spells: List<Spell>) {
         harryPotterDao().insertSpells(spells.map { it.transformToRoomSpells() })

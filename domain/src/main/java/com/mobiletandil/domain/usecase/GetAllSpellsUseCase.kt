@@ -22,7 +22,6 @@ class GetAllSpellsUseCaseImpl(private val service: HarryPotterService, private v
                 }
             }
         } catch (e: Exception) {
-            println(e)
             ResponseResult.Failure(e)
         }
     }

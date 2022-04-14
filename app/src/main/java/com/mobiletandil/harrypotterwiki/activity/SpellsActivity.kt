@@ -18,7 +18,7 @@ import com.mobiletandil.harrypotterwiki.viewmodel.SpellsActivityStatus
 import com.mobiletandil.harrypotterwiki.viewmodel.SpellsActivityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SpellsActivity : AppCompatActivity() {
+class SpellsActivity : AppCompatActivity(), SpellOnClickListener {
     private lateinit var binding: SpellsActivityBinding
     private val viewModel by viewModel<SpellsActivityViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,13 +35,14 @@ class SpellsActivity : AppCompatActivity() {
             SpellsActivityStatus.INIT_UI -> initUI(eventData.listOfSpells)
             SpellsActivityStatus.EMPTY_STATE -> setEmptyState()
             SpellsActivityStatus.ERROR_STATE -> setErrorState()
+            SpellsActivityStatus.GO_TO_DETAILED_SCREEN -> startActivity(SpellDetailActivity.getIntent(this, eventData.spell))
         }
     }
 
     private fun initUI(listOfSpells: List<Spell>) {
         with(binding.recyclerViewSpellsList) {
             layoutManager = LinearLayoutManager(context, VERTICAL, false)
-            adapter = SpellsAdapter(listOfSpells)
+            adapter = SpellsAdapter(listOfSpells, this@SpellsActivity)
         }
     }
 
@@ -56,7 +57,15 @@ class SpellsActivity : AppCompatActivity() {
         binding.spellsActivityNoConnectionText.visibility = View.VISIBLE
     }
 
+    override fun spellOnClickListener(spellID: String) {
+        viewModel.goToDetailedScreen(spellID)
+    }
+
     companion object {
         fun getIntent(context: Context) = Intent(context, SpellsActivity::class.java)
     }
+}
+
+interface SpellOnClickListener {
+    fun spellOnClickListener(spellID: String)
 }
