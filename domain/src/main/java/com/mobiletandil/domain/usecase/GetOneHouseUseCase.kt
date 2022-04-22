@@ -24,18 +24,14 @@ class GetOneHouseUseCaseImpl(private val service: HarryPotterService, private va
                 Constants.EMPTY_STRING
             }
         }
-        return try {
-            when (val responseResult = service.getHouse(houseId)) {
-                is ResponseResult.Success -> {
-                    database.insertHouse(responseResult.data)
-                    ResponseResult.Success(database.getHouse(houseId))
-                }
-                is ResponseResult.Failure -> {
-                    ResponseResult.Success(database.getHouse(houseId))
-                }
+        return when (val responseResult = service.getHouse(houseId)) {
+            is ResponseResult.Success -> {
+                database.insertHouse(responseResult.data)
+                ResponseResult.Success(database.getHouse(houseId))
             }
-        } catch (e: Exception) {
-            ResponseResult.Failure(Exception(e))
+            is ResponseResult.Failure -> {
+                ResponseResult.Success(database.getHouse(houseId))
+            }
         }
     }
 }

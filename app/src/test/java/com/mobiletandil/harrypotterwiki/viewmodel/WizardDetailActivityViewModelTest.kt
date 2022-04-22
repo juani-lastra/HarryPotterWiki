@@ -2,7 +2,7 @@ package com.mobiletandil.harrypotterwiki.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.mobiletandil.domain.entity.Wizard
-import com.mobiletandil.domain.usecase.GetOneWizardsUseCase
+import com.mobiletandil.domain.usecase.GetOneWizardUseCase
 import com.mobiletandil.domain.utils.ResponseResult
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
@@ -24,7 +24,7 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class WizardDetailActivityViewModelTest {
     private lateinit var viewModel: WizardDetailActivityViewModel
-    private val getOneWizardUseCase: GetOneWizardsUseCase = mock()
+    private val getOneWizardUseCase: GetOneWizardUseCase = mock()
     private val testDispatcher = TestCoroutineDispatcher()
 
     @get:Rule
