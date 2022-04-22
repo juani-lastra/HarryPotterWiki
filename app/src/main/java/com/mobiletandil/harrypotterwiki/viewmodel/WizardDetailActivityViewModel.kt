@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mobiletandil.domain.entity.Wizard
-import com.mobiletandil.domain.usecase.GetOneWizardsUseCase
+import com.mobiletandil.domain.usecase.GetOneWizardUseCase
 import com.mobiletandil.domain.utils.ResponseResult
 import com.mobiletandil.harrypotterwiki.utils.Event
 import com.mobiletandil.harrypotterwiki.viewmodel.WizardDetailActivityStatus.EMPTY_STATE
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 
-class WizardDetailActivityViewModel(private val getOneWizard: GetOneWizardsUseCase) : ViewModel(), KoinComponent {
+class WizardDetailActivityViewModel(private val getOneWizard: GetOneWizardUseCase) : ViewModel(), KoinComponent {
     private var mutableLiveData: MutableLiveData<Event<WizardDetailActivityData>> = MutableLiveData()
     fun liveData() = mutableLiveData
 
