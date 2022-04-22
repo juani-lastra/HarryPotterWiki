@@ -9,11 +9,5 @@ interface GetOneSpellUseCase {
 }
 
 class GetOneSpellUseCaseImpl(private val database: HarryPotterDatabase) : GetOneSpellUseCase {
-    override fun invoke(spellID: String): ResponseResult<Spell> {
-        return try {
-            ResponseResult.Success(database.getOneSpell(spellID))
-        } catch (e: Exception) {
-            ResponseResult.Failure(e)
-        }
-    }
+    override fun invoke(spellID: String): ResponseResult<Spell> = ResponseResult.Success(database.getOneSpell(spellID))
 }

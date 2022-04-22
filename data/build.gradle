@@ -36,6 +36,7 @@ dependencies {
     implementation project(path: ':domain')
 
     def lib = rootProject.ext.generalDependencies
+    def testLib = rootProject.ext.testDependencies
 
     implementation lib.retrofit
     implementation lib.converter
@@ -50,4 +51,13 @@ dependencies {
     implementation lib.room
     implementation lib.roomCoroutines
     kapt lib.roomCompiler
+    testImplementation testLib.junit
+    testImplementation testLib.mockitoCore
+    testImplementation testLib.mockitoInline
+    testImplementation testLib.mockitoKotlin
+    testImplementation testLib.androidxCoreTesting
+    testImplementation testLib.kotlinxCoroutinesTest
+    androidTestImplementation testLib.extJunit
+    androidTestImplementation testLib.mockitoAndroid
+    androidTestImplementation testLib.espresso
 }

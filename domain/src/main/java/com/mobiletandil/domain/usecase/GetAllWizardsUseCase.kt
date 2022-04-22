@@ -11,18 +11,14 @@ interface GetAllWizardsUseCase {
 
 class GetAllWizardsUseCaseImpl(private val service: HarryPotterService, private val database: HarryPotterDatabase) : GetAllWizardsUseCase {
     override fun invoke(): ResponseResult<List<Wizard>> {
-        return try {
-            when (val response = service.getWizards()) {
-                is ResponseResult.Success -> {
-                    database.insertWizards(response.data)
-                    ResponseResult.Success(database.getAllWizards())
-                }
-                is ResponseResult.Failure -> {
-                    ResponseResult.Success(database.getAllWizards())
-                }
+        return when (val response = service.getWizards()) {
+            is ResponseResult.Success -> {
+                database.insertWizards(response.data)
+                ResponseResult.Success(database.getAllWizards())
             }
-        } catch (e: Exception) {
-            ResponseResult.Failure(e)
+            is ResponseResult.Failure -> {
+                ResponseResult.Success(database.getAllWizards())
+            }
         }
     }
 }
