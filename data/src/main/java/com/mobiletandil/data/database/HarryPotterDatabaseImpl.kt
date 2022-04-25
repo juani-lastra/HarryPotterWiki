@@ -39,7 +39,13 @@ abstract class HarryPotterDatabaseImpl : RoomDatabase(), HarryPotterDatabase {
 
     abstract fun harryPotterDao(): HarryPotterDao
 
-    override fun getHouse(houseId: String): House = harryPotterDao().getHouse(houseId).transformToHouse()
+    override fun getHouse(houseId: String): House {
+        return if (harryPotterDao().getHouse(houseId) != null) {
+            harryPotterDao().getHouse(houseId).transformToHouse()
+        } else {
+            House()
+        }
+    }
 
     override fun insertHouse(house: House) {
         harryPotterDao().insertHouse(house.transformToRoomHouse())
